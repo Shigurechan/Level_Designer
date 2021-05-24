@@ -6,7 +6,7 @@ int main()
 {
 	FrameWork::Init();	//初期化
 
-	std::shared_ptr<FrameWork::Window> window = std::make_shared<FrameWork::Window>(48 * 26, 48 * 18,"Level designer");	//ウインドウコンテキスト
+	std::shared_ptr<FrameWork::Window> window = std::make_shared<FrameWork::Window>(48 * 26, 48 * 17,"Level designer");	//ウインドウコンテキスト
 
 	FrameWork::setVersion(4,5);	//バージョン設定
 

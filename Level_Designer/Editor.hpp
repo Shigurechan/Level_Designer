@@ -1,5 +1,5 @@
-#ifndef ___GAME_HPP_
-#define ___GAME_HPP_
+#ifndef ___EDITOR_HPP_
+#define ___EDITOR_HPP_
 
 #include "Scene.hpp"
 #include <FrameWork.hpp>
@@ -20,9 +20,10 @@ private:
 	
 	bool isNewFile;	//新しいファイルなのかファイル編集なのかを判定
 
-	std::shared_ptr<FrameWork::Line> line;
+	std::shared_ptr<FrameWork::Line> line;	//枠組みを描画
+	glm::vec2 mousePosition;				//マウス座標
 
-
+	
 
 };
 

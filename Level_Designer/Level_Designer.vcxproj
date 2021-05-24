@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClInclude Include="Entry.hpp" />
     <ClInclude Include="Editor.hpp" />
-    <ClInclude Include="GameOver.hpp" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="Sequence.hpp" />
     <ClInclude Include="Title.hpp" />
@@ -29,7 +28,6 @@
   <ItemGroup>
     <ClCompile Include="Entry.cpp" />
     <ClCompile Include="Editor.cpp" />
-    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Title.cpp" />

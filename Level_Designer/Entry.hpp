@@ -43,7 +43,7 @@ private:
 	//ŠeíƒV[ƒ“
 	Title* title;
 	Editor* editor;
-	GameOver* gameOver;
+	
 
 
 

@@ -40,7 +40,7 @@ Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w
 //更新
 void Editor::Update()
 {
-
+	
 
 
 
@@ -52,6 +52,22 @@ void Editor::Update()
 //レンダリング
 void Editor::Renderer()
 {
+
+
+
+
+
+
+	//枠組み
+	for (int x = 0; x < windowContext->getSize().x / CELL; x++)
+	{
+		line->Draw(glm::vec2(x * CELL,0), glm::vec2(x * CELL, windowContext->getSize().y),glm::vec4(0,255,0,255));
+	}
+
+	for (int y = 0; y < windowContext->getSize().y / CELL; y++)
+	{
+		line->Draw(glm::vec2(0, y * CELL), glm::vec2(windowContext->getSize().x, y * CELL ), glm::vec4(0, 255, 0, 255));
+	}
 
 }
 
