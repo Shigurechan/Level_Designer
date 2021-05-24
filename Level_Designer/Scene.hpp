@@ -16,6 +16,11 @@ public:
 	Scene(std::shared_ptr<FrameWork::Window> w,Sequence e);	//コンストラクタ
 	~Scene();												//デストラクタ
 
+	virtual void Update() = 0;
+	virtual void Renderer() = 0;
+	
+
+
 protected:
 
 	std::shared_ptr<FrameWork::Window> windowContext;	//ウインドウコンテキスト

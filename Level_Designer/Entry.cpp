@@ -66,7 +66,7 @@ void Entry::Loop()
 			title = nullptr;
 			if (editor == nullptr) 
 			{
-				editor = new Editor(windowContext);
+				editor = new Editor(windowContext,drapPath);
 			}
 		}
 		break;

@@ -13,7 +13,6 @@ class GameOver;
 
 class Entry : public Scene
 {
-private:
 	
 public:
 
@@ -34,6 +33,7 @@ public:
 	
 
 
+	std::string drapPath;
 
 private:
 
@@ -44,6 +44,7 @@ private:
 	Title* title;
 	Editor* editor;
 	GameOver* gameOver;
+
 
 
 

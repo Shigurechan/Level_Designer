@@ -8,20 +8,19 @@ class Entry;
 class Editor : public Scene
 {
 public:
-	Editor(std::shared_ptr<FrameWork::Window> w);		//コンストラクタ
+	Editor(std::shared_ptr<FrameWork::Window> w, std::string path);		//コンストラクタ
 	~Editor();	//デストラクタ
 
 	void Update();			//更新
-	void Renderer();		//レンダリング
+	void Renderer();	//レンダリング
 	void Loop(Entry* e);	//ループ
 
 
 private:
-
 	
-	
+	bool isNewFile;	//新しいファイルなのかファイル編集なのかを判定
 
-
+	std::shared_ptr<FrameWork::Line> line;
 
 
 

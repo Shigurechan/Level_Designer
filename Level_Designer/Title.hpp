@@ -23,6 +23,7 @@ private:
 
 	int select;
 	glm::vec2 position;
+	std::string str;	//ドラック＆ドロップパス
 };
 
 
