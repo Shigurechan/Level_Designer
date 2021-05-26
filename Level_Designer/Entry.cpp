@@ -19,7 +19,7 @@ void Entry::Update()
 }
 
 //ƒŒƒ“ƒ_ƒŠƒ“ƒO
-void Entry::Renderer()
+void Entry::Renderer()const
 {
 
 

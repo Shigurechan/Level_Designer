@@ -2,7 +2,12 @@
 #define ___SCENE_HPP_
 
 
-#define CELL ((int)48)
+#define CELL (48)
+#define byte unsigned char 
+#define STAGE_SIZE_WIDTH 26
+#define STAGE_SIZE_HEIGHT 17
+#define STAGE_SIZE (STAGE_SIZE_WIDTH * STAGE_SIZE_HEIGHT)
+
 
 
 #include <iostream>
@@ -17,7 +22,7 @@ public:
 	~Scene();												//デストラクタ
 
 	virtual void Update() = 0;
-	virtual void Renderer() = 0;
+	virtual void Renderer()const = 0;
 	
 
 

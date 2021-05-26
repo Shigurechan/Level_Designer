@@ -25,7 +25,7 @@ public:
 	~Entry();											//デストラクタ
 	
 	void Update();				//更新
-	void Renderer();			//レンダリング
+	void Renderer()const;			//レンダリング
 	void Loop();				//ループ
 
 

@@ -12,14 +12,17 @@ public:
 	~Title();	//デストラクタ
 
 	void Update();				//更新
-	void Renderer();			//レンダリング
+	void Renderer()const;			//レンダリング
 	void Loop(Entry* e);		//ループ
 
 private:
 
 	//タイトル表示
-	FrameWork::Text newFileText;
-	FrameWork::Text editFileText;
+	std::shared_ptr<FrameWork::Text> newFileText;
+	std::shared_ptr<FrameWork::Text> editFileText;
+
+
+
 
 	int select;
 	glm::vec2 position;

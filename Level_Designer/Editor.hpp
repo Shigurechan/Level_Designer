@@ -12,7 +12,7 @@ public:
 	~Editor();	//デストラクタ
 
 	void Update();			//更新
-	void Renderer();	//レンダリング
+	void Renderer()const;	//レンダリング
 	void Loop(Entry* e);	//ループ
 
 
@@ -20,7 +20,13 @@ private:
 	
 	bool isNewFile;	//新しいファイルなのかファイル編集なのかを判定
 
-	std::shared_ptr<FrameWork::Line> line;	//枠組みを描画
+	//描画変数
+	std::shared_ptr<FrameWork::Line> line;				//枠組みを描画
+	std::shared_ptr<FrameWork::Rectangle> rectCursor;	//カーソルを描画
+	std::shared_ptr<FrameWork::Sprite> sprite;			//スプライトを描画
+
+	std::shared_ptr<std::vector<byte>> stageData;	//エディットするステージ
+
 	glm::vec2 mousePosition;				//マウス座標
 
 	
