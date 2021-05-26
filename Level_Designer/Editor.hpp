@@ -18,13 +18,20 @@ public:
 
 private:
 	
-	void SelectDrawTile(int s,int x,int y)const;	//描画するタイルを選択
+	//タイルの種類
+	enum class TileType
+	{
+		None = 0xFF,
+	};
 
+	
 	bool isNewFile;	//新しいファイルなのかファイル編集なのかを判定
 
 	//描画変数
 	std::shared_ptr<FrameWork::Line> line;				//枠組みを描画
 	std::shared_ptr<FrameWork::Rectangle> rectCursor;	//カーソルを描画
+	std::shared_ptr<FrameWork::Rectangle> rectMenu;	//メニュー範囲を描画
+
 	std::shared_ptr<FrameWork::Sprite> sprite;			//スプライトを描画
 
 

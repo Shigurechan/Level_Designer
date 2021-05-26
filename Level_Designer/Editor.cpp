@@ -7,7 +7,7 @@
 //コンストラクタ
 Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w, Sequence::Editor)
 {
-	stageData = std::make_shared<std::vector<byte>>(STAGE_SIZE);
+	stageData = std::make_shared<std::vector<byte>>(STAGE_SIZE, (int)TileType::None);
 	tileData = std::make_shared<std::vector<SpriteData>>();
 
 	//ファイル操作を指定
@@ -15,27 +15,34 @@ Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w
 	{
 		//新規ファイル作成
 		isNewFile = true;
+
+		std::ofstream file;
+		file.open("Stage/test.bin");
+		file.close();
+
+
 	}
 	else {
 
 		// ファイル編集
-
-
 		isNewFile = false;
+
+
+
+
 
 		std::ofstream file;
 		file.open(path);
 
 	}
 
-
-
 	line = std::make_shared<FrameWork::Line>(windowContext);
 	rectCursor = std::make_shared<FrameWork::Rectangle>(windowContext);
+	rectMenu = std::make_shared<FrameWork::Rectangle>(windowContext);
 
 	sprite = std::make_shared<FrameWork::Sprite>(windowContext);
 	sprite->setTexture(FrameWork::LoadTexture("Assets/Tileset.png"));
-	
+
 	//タイル情報を格納
 	for (int y = 0; y < SPRITE_SIZE_HEIGHT; y++)
 	{
@@ -51,29 +58,36 @@ Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w
 		}
 	}
 
+
+	//std::cout << tileData->size() << std::endl;
+
 	
 }
-
 
 //更新
 void Editor::Update()
 {
 	//マウスカーソル座標
 	mousePosition = windowContext->getMousePos();
-	mousePosition.x = (int)mousePosition.x / CELL;
-	mousePosition.y = (int)mousePosition.y / CELL;
+	mousePosition.x = (int)mousePosition.x / (int)CELL;
+	mousePosition.y = (int)mousePosition.y / (int)CELL;
 
 	//クリックで描画
 	if (windowContext->getMouseButton(0) == true)
 	{
 		if ((((int)mousePosition.y * STAGE_SIZE_WIDTH) + (int)mousePosition.x) < STAGE_SIZE)
 		{
-			stageData->at(((int)mousePosition.y * STAGE_SIZE_WIDTH) + (int)mousePosition.x) = selectTile + 1;
+			stageData->at(((int)mousePosition.y * STAGE_SIZE_WIDTH) + (int)mousePosition.x) = selectTile;
 		}
+	}
+	else if (windowContext->getMouseButton(1) == true)
+	{
+		//タイル削除
+		stageData->at(((int)mousePosition.y * STAGE_SIZE_WIDTH) + (int)mousePosition.x) = (int)TileType::None;
 	}
 
 
-
+	//タイル選択操作
 	keyRight = windowContext->getKeyInput(GLFW_KEY_RIGHT);
 	keyLeft = windowContext->getKeyInput(GLFW_KEY_LEFT);
 	
@@ -99,13 +113,6 @@ void Editor::Update()
 			selectTile--;
 		}
 	}
-	
-	std::cout << keyRight << std::endl;
-
-
-
-
-
 	//配列の範囲内に修正
 	if (selectTile > (SPRITE_SIZE_WIDTH * SPRITE_SIZE_HEIGHT) - 1)
 	{
@@ -115,6 +122,26 @@ void Editor::Update()
 	{
 		selectTile = 0;
 	}
+
+	//ファイルに書き込み
+	if (windowContext->getKeyInput(GLFW_KEY_S) == 1)
+	{
+		
+		std::ofstream file;
+		file.open("Stage/test.bin", std::ios::binary | std::ios::out);
+		if (file.is_open() == true)
+		{
+			for (int i = 0; i < STAGE_SIZE; i++)
+			{
+				const char c = stageData->at(i);
+				file.write(&c, sizeof(unsigned char));
+			}
+		}
+		
+		file.close();
+	}
+
+
 
 
 	
@@ -141,40 +168,44 @@ void Editor::Renderer() const
 		line->Draw(glm::vec2(0, y * CELL), glm::vec2(windowContext->getSize().x, y * CELL ), glm::vec4(0, 255, 0, 255));
 	}
 	
+	rectMenu->Draw(glm::vec2(0,CELL * (STAGE_SIZE_HEIGHT)), glm::vec2(CELL * STAGE_SIZE_WIDTH, CELL * (STAGE_SIZE_HEIGHT + 1)),0.0f,glm::vec2(0,0),glm::vec4(0,100,0,255));
+
+
 	//タイル描画
 	for (int y = 0; y < STAGE_SIZE_HEIGHT; y++)
 	{
 		for (int x = 0; x < STAGE_SIZE_WIDTH; x++)
 		{
-			if (stageData->at(y * STAGE_SIZE_WIDTH + x) != 0)
+			int s = stageData->at(y * STAGE_SIZE_WIDTH + x);
+			if (s != (int)TileType::None)
 			{
-
-				sprite->DrawGraph(glm::vec2(x * CELL, y * CELL), 0, 0, glm::vec2(0, 0), tileData->at(selectTile).startSize, tileData->at(selectTile).endSize);
+				sprite->DrawGraph(glm::vec2(x * CELL, y * CELL), 0, 0, glm::vec2(0, 0), tileData->at(s).startSize, tileData->at(s).endSize);
 			}
-			/*	
-			switch (stageData->at(y * STAGE_SIZE_WIDTH + x))
-			{
-			 	case 1: { sprite->DrawGraph(glm::vec2(x * CELL, y * CELL), 0, 0, glm::vec2(0, 0), tileData->at(selectTile).startSize, tileData->at(selectTile).endSize); } break;
-			}
-
-			*/
 		}
 	}
 	
-	//選択しているタイルを描画
-	sprite->DrawGraph(glm::vec2(CELL, CELL * STAGE_SIZE_HEIGHT), 0, 0, glm::vec2(0, 0), tileData->at(selectTile).startSize, tileData->at(selectTile).endSize);
-
-	if (selectTile > 0) 
+	//選択しているタイルを描画	
+	if (selectTile > 1)
 	{
-		sprite->DrawGraph(glm::vec2(0, CELL * STAGE_SIZE_HEIGHT + 10), 0, 0, glm::vec2(0, 0), tileData->at(selectTile - 1).startSize, tileData->at(selectTile - 1).endSize);
+		sprite->DrawGraph(glm::vec2(10, CELL * STAGE_SIZE_HEIGHT), 0, 0, glm::vec2(-20, -20), tileData->at(selectTile - 2).startSize, tileData->at(selectTile - 2).endSize);
 	}
+	if (selectTile > 0)
+	{
+		sprite->DrawGraph(glm::vec2(CELL + 3, CELL * STAGE_SIZE_HEIGHT), 0, 0, glm::vec2(-10, -10), tileData->at(selectTile - 1).startSize, tileData->at(selectTile - 1).endSize);
+	}
+
+
+	sprite->DrawGraph(glm::vec2(CELL * 2, CELL * STAGE_SIZE_HEIGHT), 0, 0, glm::vec2(0, 0), tileData->at(selectTile).startSize, tileData->at(selectTile).endSize);
 
 	if (selectTile < (SPRITE_SIZE_WIDTH * SPRITE_SIZE_HEIGHT) - 1)
 	{
-		sprite->DrawGraph(glm::vec2(CELL*2, CELL * STAGE_SIZE_HEIGHT + 10), 0, 0, glm::vec2(0, 0), tileData->at(selectTile + 1).startSize, tileData->at(selectTile + 1).endSize);
-
+		sprite->DrawGraph(glm::vec2((CELL*3) - 2, CELL * STAGE_SIZE_HEIGHT), 0, 0, glm::vec2(-10, -10), tileData->at(selectTile + 1).startSize, tileData->at(selectTile + 1).endSize);
 	}
 
+	if (selectTile < (SPRITE_SIZE_WIDTH * SPRITE_SIZE_HEIGHT) - 2)
+	{
+		sprite->DrawGraph(glm::vec2((CELL * 4) - 10, CELL * STAGE_SIZE_HEIGHT), 0, 0, glm::vec2(-20, -20), tileData->at(selectTile + 2).startSize, tileData->at(selectTile + 2).endSize);
+	}
 
 
 	//sprite->DrawGraph(glm::vec2(CELL, CELL), 0, 0, glm::vec2(0, 0), glm::vec2(0, 0), glm::vec2(CELL, CELL));
@@ -204,6 +235,18 @@ void Editor::Loop(Entry* e)
 	Update();
 	Renderer();
 }
+
+// ##################################### メンバ関数 #####################################
+
+
+
+
+
+
+
+
+
+
 
 //デストラクタ
 Editor::~Editor()

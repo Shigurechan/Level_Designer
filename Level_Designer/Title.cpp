@@ -14,14 +14,20 @@ Title::Title(std::shared_ptr<FrameWork::Window> w) : Scene(w, Sequence::Title)
 	position = glm::vec2(0,0);
 }
 
+
+
+std::vector<char> chr(0);
+
 //XV
 void Title::Update()
 {
+	
 
 	//•ÒW
 	str = windowContext->getDropPath();
 	if (str != "")
 	{
+
 		moveScene = Sequence::Editor;
 	}
 
