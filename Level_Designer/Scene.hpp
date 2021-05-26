@@ -8,6 +8,9 @@
 #define STAGE_SIZE_HEIGHT 17
 #define STAGE_SIZE (STAGE_SIZE_WIDTH * STAGE_SIZE_HEIGHT)
 
+#define SPRITE_SIZE_WIDTH 10
+#define SPRITE_SIZE_HEIGHT 10
+
 
 
 #include <iostream>

@@ -18,6 +18,8 @@ public:
 
 private:
 	
+	void SelectDrawTile(int s,int x,int y)const;	//描画するタイルを選択
+
 	bool isNewFile;	//新しいファイルなのかファイル編集なのかを判定
 
 	//描画変数
@@ -25,11 +27,27 @@ private:
 	std::shared_ptr<FrameWork::Rectangle> rectCursor;	//カーソルを描画
 	std::shared_ptr<FrameWork::Sprite> sprite;			//スプライトを描画
 
-	std::shared_ptr<std::vector<byte>> stageData;	//エディットするステージ
+
+	typedef struct sprite_data
+	{
+		glm::vec2 startSize;
+		glm::vec2 endSize;
+	}SpriteData;
+
+	std::shared_ptr<std::vector<SpriteData>> tileData;	//タイルリスト
+	std::shared_ptr<std::vector<byte>> stageData;		//エディットするステージ
 
 	glm::vec2 mousePosition;				//マウス座標
 
 	
+	int selectTile = 0;	//選択するタイル
+
+	bool holdRight = false;	//長押し判定
+	bool holdLeft = false;	//長押し判定
+	int keyRight = 0;	//入力時間
+	int keyLeft = 0;	//入力時間
+
+
 
 };
 
