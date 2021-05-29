@@ -3,19 +3,12 @@
 
 
 #define CELL (48)
-#define byte unsigned char 
-#define STAGE_SIZE_WIDTH 26
-#define STAGE_SIZE_HEIGHT 17
-#define STAGE_SIZE (STAGE_SIZE_WIDTH * STAGE_SIZE_HEIGHT)
-
-#define SPRITE_SIZE_WIDTH 10
-#define SPRITE_SIZE_HEIGHT 10
 
 
 
 #include <iostream>
 #include "Sequence.hpp"
-#include <FrameWork.hpp>
+#include "FrameWork.hpp"
 
 class Scene
 {
