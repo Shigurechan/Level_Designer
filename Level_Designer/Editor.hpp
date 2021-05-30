@@ -13,12 +13,12 @@
 
 
 //スプライト枚数
-#define	SPRITE_NUM_WIDTH (480 / CELL)
-#define SPRITE_NUM_HEIGHT (528 / CELL)
+#define	SPRITE_NUM_WIDTH (4)
+#define SPRITE_NUM_HEIGHT (4)
 
 //タイル
-#define	TILE_NUM_WIDTH (10)
-#define TILE_NUM_HEIGHT (8)
+#define	TILE_NUM_WIDTH (4)
+#define TILE_NUM_HEIGHT (2)
 
 
 //スプライト全部の枚数
