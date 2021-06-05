@@ -46,8 +46,8 @@ void Title::Update()
 void Title::Renderer()const
 {
 	//‰æ–Ê•\Ž¦
-	newFileText->Draw(glm::vec2(100, 100), "New File: EnterKey ", 1.0f, glm::vec3(0, 255, 0));
-	editFileText->Draw(glm::vec2(150, 150), "Edit File: D&D ", 1.0f, glm::vec3(0, 255, 0));
+	newFileText->Draw(glm::vec2(100, 100), 1.0f, glm::vec3(0, 255, 0), "New File: EnterKey ");
+	editFileText->Draw(glm::vec2(150, 150),1.0f, glm::vec3(0, 255, 0),"Edit File: D&D ");
 
 
 

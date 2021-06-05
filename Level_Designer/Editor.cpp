@@ -283,7 +283,7 @@ void Editor::Renderer() const
 	if (isSave == true)
 	{
 		//saveText->Draw(glm::vec2(STAGE_SIZE_WIDTH - CELL, STAGE_SIZE_HEIGHT - CELL), "SAVED", 1.0f, glm::vec3(0, 255, 0));
-		saveText->Draw(glm::vec2(100,100), "SAVED", 1.0f, glm::vec3(0, 255, 0));
+		saveText->Draw(glm::vec2(100,100),1.0f, glm::vec3(0, 255, 0), "SAVED");
 	}
 
 
