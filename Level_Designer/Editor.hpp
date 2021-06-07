@@ -11,14 +11,9 @@
 #define STAGE_SIZE_HEIGHT 17
 #define STAGE_SIZE (STAGE_SIZE_WIDTH * STAGE_SIZE_HEIGHT)
 
-
-//スプライト枚数
-#define	SPRITE_NUM_WIDTH (4)
-#define SPRITE_NUM_HEIGHT (4)
-
-//タイル
-#define	TILE_NUM_WIDTH (4)
-#define TILE_NUM_HEIGHT (2)
+#define BACKGROUND_TEX_NUM 0
+#define ITEM_TEX_NUM 1
+#define ENEMY_TEX_NUM 2
 
 
 //スプライト全部の枚数
@@ -59,6 +54,7 @@ private:
 	{
 		glm::vec2 startSize;
 		glm::vec2 endSize;
+		int texNum;
 	}SpriteData;
 
 	std::shared_ptr<std::vector<SpriteData>> tileData;	//タイルリスト
@@ -70,6 +66,9 @@ private:
 	glm::vec2 mousePosition;	//マウス座標
 	
 	int selectTile = 0;	//選択するタイル
+	int backGroundTextureNum;	//バックグランドのスプライト
+
+
 
 	bool holdRight = false;	//長押し判定
 	bool holdLeft = false;	//長押し判定

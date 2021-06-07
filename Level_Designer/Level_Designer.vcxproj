@@ -102,12 +102,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\freetype;C:\;C:\Users\KenMatsuzawa\Desktop\OpenGL_FrameWork\OpenGL_FrameWork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\freetype\include;C:\;C:\Users\yw325\Desktop\OpenGL_FrameWork\OpenGL_FrameWork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\KenMatsuzawa\Desktop\OpenGL_FrameWork\x64\Debug;C:\glfw\lib-vc2019;C:\glew\lib\Release\x64;C:\freetype\lib\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\yw325\Desktop\OpenGL_FrameWork\x64\Debug;C:\glfw\lib-vc2019;C:\glew\lib\Release\x64;C:\freetype\release dll\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>OpenGL_FrameWork.lib;opengl32.lib;glfw3.lib;glew32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -119,14 +119,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\freetype;C:\;C:\Users\KenMatsuzawa\Desktop\OpenGL_FrameWork\OpenGL_FrameWork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\freetype\include;C:\;C:\Users\yw325\Desktop\OpenGL_FrameWork\OpenGL_FrameWork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\KenMatsuzawa\Desktop\OpenGL_FrameWork\x64\Debug;C:\glfw\lib-vc2019;C:\glew\lib\Release\x64;C:\freetype\lib\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\yw325\Desktop\OpenGL_FrameWork\x64\Debug;C:\glfw\lib-vc2019;C:\glew\lib\Release\x64;C:\freetype\release dll\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>OpenGL_FrameWork.lib;opengl32.lib;glfw3.lib;glew32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -136,12 +136,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\freetype;C:\;C:\Users\KenMatsuzawa\Desktop\OpenGL_FrameWork\OpenGL_FrameWork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\freetype\include;C:\;C:\Users\yw325\Desktop\OpenGL_FrameWork\OpenGL_FrameWork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\KenMatsuzawa\Desktop\OpenGL_FrameWork\x64\Debug;C:\glfw\lib-vc2019;C:\glew\lib\Release\x64;C:\freetype\lib\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\yw325\Desktop\OpenGL_FrameWork\x64\Debug;C:\glfw\lib-vc2019;C:\glew\lib\Release\x64;C:\freetype\release dll\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>OpenGL_FrameWork.lib;opengl32.lib;glfw3.lib;glew32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -153,14 +153,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\freetype;C:\;C:\Users\KenMatsuzawa\Desktop\OpenGL_FrameWork\OpenGL_FrameWork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\freetype\include;C:\;C:\Users\yw325\Desktop\OpenGL_FrameWork\OpenGL_FrameWork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\KenMatsuzawa\Desktop\OpenGL_FrameWork\x64\Debug;C:\glfw\lib-vc2019;C:\glew\lib\Release\x64;C:\freetype\lib\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\yw325\Desktop\OpenGL_FrameWork\x64\Debug;C:\glfw\lib-vc2019;C:\glew\lib\Release\x64;C:\freetype\release dll\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>OpenGL_FrameWork.lib;opengl32.lib;glfw3.lib;glew32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
