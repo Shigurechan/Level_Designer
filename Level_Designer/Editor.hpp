@@ -64,8 +64,10 @@ private:
 	std::shared_ptr< std::vector<byte> > stageDataObject;		//マップオブジェクト
 
 	glm::vec2 mousePosition;	//マウス座標
-	
-	int selectTile = 0;	//選択するタイル
+	char fileName[1000];		//ファイル名
+
+
+	int selectTile = 0;			//選択するタイル
 	int backGroundTextureNum;	//バックグランドのスプライト
 
 

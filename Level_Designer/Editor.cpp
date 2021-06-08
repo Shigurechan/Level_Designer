@@ -14,7 +14,7 @@ Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w
 	isSave = false;	//保存キーをおしたかどうか？
 
 
-	stageData = std::make_shared<std::vector<byte>>(STAGE_SIZE, (int)TileType::None);
+	stageData = std::make_shared<std::vector<byte>>(STAGE_SIZE,(int)TileType::None);
 	stageDataObject = std::make_shared<std::vector<byte>>(STAGE_SIZE, (int)TileType::None);
 	tileData = std::make_shared<std::vector<SpriteData>>();
 
@@ -31,33 +31,6 @@ Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w
 
 
 
-	//ファイル操作を指定
-	if (path == "")
-	{
-		//新規ファイル作成
-		isNewFile = true;
-
-		std::ofstream file;
-		file.open("Stage/test.bin");
-		file.close();
-
-
-	}
-	else {
-
-		// ファイル編集
-		isNewFile = false;
-
-
-
-
-
-		std::ofstream file;
-		file.open(path);
-
-	}
-
-	
 
 	// ================ タイル情報を設定 ================ 
 
@@ -66,11 +39,11 @@ Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w
 	{
 		for (int x = 0; x < sprite->getTextureSize(BACKGROUND_TEX_NUM).x / CELL; x++)
 		{
-			SpriteData s;	
+			SpriteData s;
 			s.startSize = glm::vec2(x * CELL, y * CELL);
 			s.endSize = glm::vec2((x + 1) * CELL, (y + 1) * CELL);
 			s.texNum = BACKGROUND_TEX_NUM;
-			tileData->push_back(s);	
+			tileData->push_back(s);
 		}
 	}
 
@@ -98,7 +71,60 @@ Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w
 			s.texNum = ENEMY_TEX_NUM;
 			tileData->push_back(s);
 		}
-	}	
+	}
+
+
+	//ファイル操作を指定
+	if (path.c_str() == "")
+	{
+		//新規ファイル作成
+		isNewFile = true;
+
+		
+
+
+	}
+	else 
+	{
+
+		// ファイル編集
+
+		isNewFile = false;
+		stageData->clear();
+		stageDataObject->clear();
+
+		std::cout << path.size() << std::endl;
+		strcpy_s(fileName,sizeof(fileName) / sizeof(char),path.c_str());	//ファイル名をコピー
+
+		std::ifstream file;
+		file.open(fileName, std::ios::binary | std::ios::in);
+		if (file.is_open() == true)
+		{
+			//タイル
+			for (int i = 0; i < STAGE_SIZE; i++)
+			{
+				char c;
+				file.read(&c, sizeof(byte));
+				stageData->push_back((byte)c);
+				printf("0x%x\n",(byte)c);
+			}
+
+			//オブジェクト
+			for (int i = 0; i < STAGE_SIZE; i++)
+			{
+				char c;
+				file.read(&c, sizeof(byte));
+				stageDataObject->push_back((byte)c);
+
+			}
+		}	
+		file.close();
+
+	}
+
+	
+	
+
 }
 
 // ################################################### 更新 ################################################### 
@@ -110,7 +136,7 @@ void Editor::Update()
 	mousePosition.y = (int)mousePosition.y / (int)CELL;
 
 	//クリックで描画
-	if (windowContext->getMouseButton(0) == true)
+	if (windowContext->getMouseButton(0) > 1)
 	{
 		if (  (((int)mousePosition.y * STAGE_SIZE_WIDTH) + (int)mousePosition.x) < STAGE_SIZE )
 		{
@@ -126,21 +152,18 @@ void Editor::Update()
 					stageDataObject->at(((int)mousePosition.y * STAGE_SIZE_WIDTH) + (int)mousePosition.x) = selectTile;
 					//std::cout << "オブジェクト描画" << std::endl;
 				}
-
-
-
 			}
 			else 
 			{
 				
 			}
 
-			printf("binary: %x\n",selectTile);
+		//	printf("binary: %x\n",selectTile);
 			//std::cout << "binary: " << selectTile << std::endl;
 
 		}
 	}
-	else if (windowContext->getMouseButton(1) == true)
+	else if (windowContext->getMouseButton(1) == 1)
 	{
 		//右クリックで削除
 
@@ -161,6 +184,7 @@ void Editor::Update()
 	keyRight = windowContext->getKeyInput(GLFW_KEY_RIGHT);
 	keyLeft = windowContext->getKeyInput(GLFW_KEY_LEFT);
 	
+	//ベクターの範囲内にする
 	if (keyRight > 0)
 	{
 		if (keyRight == 1)
@@ -183,7 +207,6 @@ void Editor::Update()
 			selectTile--;
 		}
 	}
-
 	if (selectTile < 0)
 	{
 		selectTile = 0;
@@ -199,7 +222,16 @@ void Editor::Update()
 	{
 		isSave = true;
 		std::ofstream file;
-		file.open("Stage/test.bin", std::ios::binary | std::ios::out);
+
+		if (isNewFile == false)
+		{
+			file.open(fileName, std::ios::binary | std::ios::out);
+		}
+		else {
+			file.open("Stage/test.bin", std::ios::binary | std::ios::out);
+
+		}
+
 		if (file.is_open() == true)
 		{
 			//タイル
@@ -216,8 +248,8 @@ void Editor::Update()
 				file.write(&c, sizeof(unsigned char));
 			}
 		}
-		
 
+		
 
 
 
