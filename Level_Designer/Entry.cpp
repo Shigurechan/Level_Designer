@@ -5,11 +5,9 @@
 //コンストラクタ
 Entry::Entry(std::shared_ptr<FrameWork::Window> w) : Scene(w,Sequence::Invalid)
 {
-	moveScene = Sequence::Title;
+	moveScene = Sequence::Title;	//初期シーン
 	title = nullptr;
 	editor = nullptr;
-	
-
 }
 
 //更新
@@ -22,7 +20,6 @@ void Entry::Update()
 void Entry::Renderer()const
 {
 
-
 }
 
 //ループ
@@ -33,42 +30,35 @@ void Entry::Loop()
 		title->Loop(this);
 	}
 	else if (editor)
-	{
-		
+	{		
 		editor->Loop(this);
 	}
 	
-
-
-	//シーン推移判定
+	//シーン推移
 	switch (moveScene)
 	{
-
-	case Sequence::Title:
-		{
-			
+		//タイトル
+		case Sequence::Title:
+		{			
 			if (title == nullptr)
 			{
-				title = new Title(windowContext);
+				editor = nullptr;
+				title = std::make_unique<Title>(windowContext);
 			}
 		}
 		break;
 
-	case Sequence::Editor:
+		//エディター
+		case Sequence::Editor:
 		{
-			delete title;
-			title = nullptr;
 			if (editor == nullptr) 
 			{
-				editor = new Editor(windowContext,drapPath);
+				title = nullptr;
+				editor = std::make_unique<Editor>(windowContext,drapPath);
 			}
 		}
 		break;
 	}
-
-
-
-
 }
 
 

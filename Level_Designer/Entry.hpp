@@ -16,38 +16,22 @@ class Entry : public Scene
 	
 public:
 
-	
-
-
-
-
 	Entry(std::shared_ptr<FrameWork::Window> w);		//コンストラクタ
 	~Entry();											//デストラクタ
 	
 	void Update();				//更新
-	void Renderer()const;			//レンダリング
+	void Renderer()const;		//レンダリング
 	void Loop();				//ループ
-
 
 	void MoveTo(Sequence e);	//シーン切り替え
 	
-
-
-	std::string drapPath;
+	std::string drapPath;	//D＆Dパス
 
 private:
 
-	
-	//Sequence moveScene;	//シーン切り替え
-
 	//各種シーン
-	Title* title;
-	Editor* editor;
-	
-
-
-
-
+	std::unique_ptr<Title> title;		//タイトル
+	std::unique_ptr<Editor> editor;		//エディター
 };
 
 

@@ -9,24 +9,16 @@ class Title : public Scene
 {
 public:
 	Title(std::shared_ptr<FrameWork::Window> w);	//コンストラクタ
-	~Title();	//デストラクタ
+	~Title();										//デストラクタ
 
 	void Update();				//更新
-	void Renderer()const;			//レンダリング
+	void Renderer()const;		//レンダリング
 	void Loop(Entry* e);		//ループ
 
 private:
 
-	//タイトル表示
-	std::shared_ptr<FrameWork::Text> newFileText;
-	std::shared_ptr<FrameWork::Text> editFileText;
-
-
-
-
-	int select;
-	glm::vec2 position;
-	std::string str;	//ドラック＆ドロップパス
+	std::shared_ptr<FrameWork::Text> text;	//文字描画	
+	std::string str;						//ドラック＆ドロップパス
 };
 
 

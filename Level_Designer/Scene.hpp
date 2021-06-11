@@ -17,10 +17,8 @@ public:
 	Scene(std::shared_ptr<FrameWork::Window> w,Sequence e);	//コンストラクタ
 	~Scene();												//デストラクタ
 
-	virtual void Update() = 0;
-	virtual void Renderer()const = 0;
-	
-
+	virtual void Update() = 0;			//更新
+	virtual void Renderer()const = 0;	//描画
 
 protected:
 
