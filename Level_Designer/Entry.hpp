@@ -2,14 +2,11 @@
 #define ___ENTRY_HPP_
 #include <iostream>
 #include "Scene.hpp"
-
 #include <FrameWork.hpp>
 
 class Title;
 class Editor;
 class GameOver;
-
-
 
 class Entry : public Scene
 {
@@ -33,7 +30,4 @@ private:
 	std::unique_ptr<Title> title;		//タイトル
 	std::unique_ptr<Editor> editor;		//エディター
 };
-
-
 #endif
-

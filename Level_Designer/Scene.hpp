@@ -1,14 +1,10 @@
 #ifndef ___SCENE_HPP_
 #define ___SCENE_HPP_
-
-
-#define CELL (48)
-
-
-
 #include <iostream>
 #include "Sequence.hpp"
 #include "FrameWork.hpp"
+
+#define CELL (48)
 
 class Scene
 {
@@ -23,10 +19,6 @@ public:
 protected:
 
 	std::shared_ptr<FrameWork::Window> windowContext;	//ウインドウコンテキスト
-
 	Sequence moveScene;	//シーン推移
 };
-
 #endif
-
-

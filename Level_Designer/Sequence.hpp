@@ -8,6 +8,4 @@ enum class Sequence
 	Editor = 1,
 	Invalid = 2,
 };
-
-
 #endif

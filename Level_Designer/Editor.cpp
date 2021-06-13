@@ -72,21 +72,17 @@ Editor::Editor(std::shared_ptr<FrameWork::Window> w, std::string path) : Scene(w
 	if (path == "")
 	{
 		//新規ファイル作成
-
 		isNewFile = true;
-
 		stageData->resize(STAGE_SIZE);
 		stageDataObject->resize(STAGE_SIZE);
 	}
 	else 
 	{
 		// ファイル編集
-
 		isNewFile = false;
 		stageData->clear();
 		stageDataObject->clear();
 
-		std::cout << path.size() << std::endl;
 		strcpy_s(fileName,sizeof(fileName) / sizeof(char),path.c_str());	//ファイル名をコピー
 
 		std::ifstream file;
@@ -237,8 +233,7 @@ void Editor::SaveFile()
 	}
 }
 
-
-// ################################################### 更新 ################################################### 
+// ##################################### 更新 ##################################### 
 void Editor::Update()
 {
 	KeyControl();	//操作
@@ -265,7 +260,7 @@ void Editor::Renderer() const
 	}
 	
 	//カーソル
-	rectMenu->Draw(glm::vec2(0,CELL * (STAGE_SIZE_HEIGHT)), glm::vec2(CELL * STAGE_SIZE_WIDTH, CELL * (STAGE_SIZE_HEIGHT + 1)),0.0f,glm::vec2(0,0),glm::vec4(0,100,0,255));
+	rectMenu->Draw(glm::vec2(0,CELL * (STAGE_SIZE_HEIGHT)), glm::vec2(CELL * STAGE_SIZE_WIDTH, CELL * (STAGE_SIZE_HEIGHT + 1)),0.0f,glm::vec2(0,0),glm::vec4(0,255,0,255));
 
 	//タイル描画
 	for (int y = 0; y < STAGE_SIZE_HEIGHT; y++)

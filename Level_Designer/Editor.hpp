@@ -18,11 +18,12 @@
 
 #define KEY_HOLD 30	//長押しフレーム数
 
-
 class Entry;
+
 class Editor : public Scene
 {
 public:
+
 	Editor(std::shared_ptr<FrameWork::Window> w, std::string path);		//コンストラクタ
 	~Editor();															//デストラクタ
 
@@ -60,8 +61,8 @@ private:
 	std::shared_ptr<std::vector<SpriteData>> tileData;	//タイルリスト
 
 	//エディットするステージ
-	std::shared_ptr< std::vector<byte> > stageData;				//ステージ
-	std::shared_ptr< std::vector<byte> > stageDataObject;		//マップオブジェクト
+	std::shared_ptr< std::vector<byte> > stageData;			//ステージ
+	std::shared_ptr< std::vector<byte> > stageDataObject;	//マップオブジェクト
 
 	glm::vec2 mousePosition;	//マウス座標
 	char fileName[1000];		//ファイル名
@@ -78,6 +79,4 @@ private:
 	bool isSave;								//保存キーを押したかどうか？
 	std::shared_ptr<FrameWork::Text> saveText;	//セーブ文字を表示
 };
-
-
 #endif
